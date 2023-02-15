@@ -1,1 +1,1 @@
-# interexy-react-project
+# interexy-test-project-frontend
