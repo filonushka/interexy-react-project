@@ -1,0 +1,21 @@
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  column-gap: 15px;
+  justify-content: center;
+
+  &__content {
+    display: flex;
+    flex: 1 1;
+    gap: 15px;
+  }
+}
+
+.content {
+  position: relative;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  //check later if it's needed >
+  flex: 1 1;
+}
