@@ -1,18 +1,28 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
 
-export default function Article() {
-  return (
-    <Box
-      sx={{
-        width: 300,
-        height: 300,
-        backgroundColor: 'primary.dark',
-        '&:hover': {
-          backgroundColor: 'primary.main',
-          opacity: [0.9, 0.8, 0.7],
-        },
-      }}
-    />
-  );
+import { Card, CardContent, Typography } from "@mui/material";
+
+export interface IArticleData {
+    title: string;
+    text: string;
 }
+
+const Article = ({ title, text }: IArticleData) => {
+    return (
+        <Card sx={{ width: 500, backgroundColor: "#AED6F1" }}>
+            <CardContent>
+                <Typography variant="h5" component="p">
+                    {title}
+                </Typography>
+                <Typography
+                    variant="body2"
+                    sx={{ mb: 1.5 }}
+                    color="text.secondary"
+                >
+                    {text}
+                </Typography>
+            </CardContent>
+        </Card>
+    );
+};
+
+export default Article;
