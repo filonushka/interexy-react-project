@@ -3,6 +3,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActions, Avatar, Link, Chip } from '@mui/material';
+import { styled } from "@mui/material/styles";
 
 export interface ICharacterData {
     id: number;
@@ -13,12 +14,45 @@ export interface ICharacterData {
     status: string;
 }
 
+const StyledCard = styled(Card)`
+  background-color: #F4F6F7;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin: 10px;
+
+  .css-1wlk0hk-MuiAvatar-root {
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+  }
+
+  .css-46bh2p-MuiCardContent-root {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .MuiLink-button{
+    color: #000000;
+    font-size: 16px;
+    text-decoration: none;
+
+    &:hover {
+      color: #5B2C6F;
+      text-decoration: underline
+
+    }
+  }
+`;
+
+
 export  function CharacterCard({ name, image, gender, species, status, id }: ICharacterData) {
   return (
-    <Card   key={id} sx={{ maxWidth: 345 }}>
+    <StyledCard   key={id} sx={{ width: 500}}>
      <Avatar alt={name} src={image} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h6" component="div">
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -27,7 +61,7 @@ export  function CharacterCard({ name, image, gender, species, status, id }: ICh
           <Typography variant="body2" color="text.secondary">
             {gender}
           </Typography>
-          <Chip
+          <Chip 
             label={status}
             color={status === "Alive" ? "secondary" : "primary"}
           />
@@ -37,6 +71,6 @@ export  function CharacterCard({ name, image, gender, species, status, id }: ICh
             Read more
           </Link>
         </CardActions>
-    </Card>
+    </StyledCard>
   );
 }

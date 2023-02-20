@@ -3,6 +3,7 @@ import { getCharacter } from "../../../src/api/characterApi";
 import { CharacterCard, ICharacterData } from "../../components/сard/card"
 
 import React from 'react'
+import { Grid } from "@mui/material";
 
 function Characters() {
   const [cards, setCardsData] = useState([]);
@@ -14,7 +15,13 @@ function Characters() {
 
   const memoCards = useMemo(() => {
     return (
-      <div> 
+         <Grid
+            container
+            spacing={2}
+            p={1}
+            sx={{ justifyContent: "center", mt: 3 }}
+        >
+
         {cards.map((card : ICharacterData ) => (
           <p>
             <CharacterCard           
@@ -24,10 +31,10 @@ function Characters() {
               species={card.species}
               status={card.status}
               id={card.id}
-            ></CharacterCard>
+              ></CharacterCard>
           </p>
         ))}
- </div>
+        </Grid>
     );
   }, [cards]);
 
