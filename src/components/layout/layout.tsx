@@ -34,7 +34,7 @@ function Layout() {
                         item
                         xs={10}
                         sx={{
-                            flexGrow: 1,
+                            flex: 1,
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
@@ -43,7 +43,7 @@ function Layout() {
                     >
                   <Outlet />
                 </Grid>
-                <Grid item xs={2} sx={{ height: "100%" }}>
+                <Grid item xs={2} sx={{ minHeight: "100vh" }}>
                   <Aside/>
                 </Grid>
               </Grid> 

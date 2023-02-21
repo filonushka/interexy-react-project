@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { styled } from "@mui/material/styles";
+import SearchCharacter from "../searchCharacter/searchCharacter";
 
 
 
@@ -20,6 +21,7 @@ interface IAccordionData {
 let StyledBox = styled(Box)`
     height: 100%;
     padding: 15px;
+    
     .css-ffjoah-MuiGrid-root {
         flex-grow: 1;
         align-content: bottom;
@@ -65,6 +67,9 @@ const Aside = () => {
                         </AccordionDetails>
                     </Accordion>
                 </Grid>
+                 <Grid item>
+                    <SearchCharacter/>
+                 </Grid>
             </Grid>
         </StyledBox>
     );

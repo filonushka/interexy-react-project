@@ -111,8 +111,8 @@ export default function Sidebar() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       
-      <AppBar position="fixed" open={open} sx={{
-              ...(open && { background: 'primary' }),
+      <AppBar position="fixed" open={open} sx={{ background: '#2c2b30', 
+              ...(open && { background: '#2c2b30' }),
             }}>
         <Toolbar>
           <IconButton
