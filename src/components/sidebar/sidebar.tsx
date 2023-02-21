@@ -19,6 +19,8 @@ import HomeIcon from "@mui/icons-material/Home"
 import ArticleIcon from "@mui/icons-material/Article"
 import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
+import { ListItemIcon } from '@mui/material';
+import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 
 const drawerWidth = 240;
 
@@ -145,8 +147,18 @@ export default function Sidebar() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-              >                    
-               <Link href={`${text.path}`} underline="hover" sx={{ opacity: open ? 1 : 0 }}>{text.icon} {text.name}</Link>
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                    color: 'inherit'
+                  }}
+                >
+                <Link href={`${text.path}`} underline="hover" sx={{color: 'inherit'}}>{text.icon}</Link>
+                </ListItemIcon>
+               <Link href={`${text.path}`} underline="hover" sx={{ opacity: open ? 1 : 0, width: open ? 240 : 0, color: 'inherit'}}>{text.name}</Link>
               </ListItemButton>
             </ListItem>
           ))}
