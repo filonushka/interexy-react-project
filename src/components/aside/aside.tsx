@@ -58,7 +58,6 @@ const Aside = () => {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel2a-content"
-                            // id={accordion2.id}
                         >
                             <Typography>Accordion 2</Typography>
                         </AccordionSummary>
@@ -67,9 +66,6 @@ const Aside = () => {
                         </AccordionDetails>
                     </Accordion>
                 </Grid>
-                 <Grid item>
-                    <SearchCharacter/>
-                 </Grid>
             </Grid>
         </StyledBox>
     );
