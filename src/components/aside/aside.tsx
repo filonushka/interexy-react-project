@@ -1,22 +1,6 @@
-import {
-    Box,
-    Grid,
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import {Box, Grid} from "@mui/material";
 import { styled } from "@mui/material/styles";
-import SearchCharacter from "../searchCharacter/searchCharacter";
-
-
-
-interface IAccordionData {
-    id: string;
-    title: string;
-    details?: string;
-}
+import AccordionList from "../accordion/accordion";
 
 let StyledBox = styled(Box)`
     height: 100%;
@@ -35,36 +19,14 @@ StyledBox = styled(StyledBox)(({ theme }) => ({
 }));
 
 const Aside = () => {
-    
-
     return (
         <StyledBox>
             <Grid container direction={"column"} spacing={1} sx = {{mt: 3, mb: 3}}>
                 <Grid item>
-                    <Accordion>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                        >
-                            <Typography>Accordion</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>Details</Typography>
-                        </AccordionDetails>
-                    </Accordion>
+                   <AccordionList/>
                 </Grid>
                 <Grid item>
-                    <Accordion>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel2a-content"
-                        >
-                            <Typography>Accordion 2</Typography>
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            <Typography>Details</Typography>
-                        </AccordionDetails>
-                    </Accordion>
+                   <AccordionList/>
                 </Grid>
             </Grid>
         </StyledBox>

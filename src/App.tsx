@@ -1,7 +1,5 @@
-import { Routes, Route } from "react-router-dom";
-
+import { Routes, Route } from "react-router-dom"
 import "./App.scss";
-
 import Layout from "./components/layout/layout";
 import Home from "./pages/home/home";
 import Articles from "./pages/articles/articles";

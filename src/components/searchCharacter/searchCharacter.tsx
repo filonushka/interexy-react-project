@@ -1,9 +1,8 @@
 import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import { useEffect, useState } from 'react';
+import {TextField,Autocomplete} from '@mui/material';
 import { getCharacter } from "../../../src/api/characterApi";
 import {ICharacterData } from "../../components/сard/card"
-import { useEffect, useState } from 'react';
 
 
 export default function SearchCharacter() {

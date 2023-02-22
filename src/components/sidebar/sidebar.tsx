@@ -1,25 +1,8 @@
 import * as React from 'react';
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import MuiDrawer from '@mui/material/Drawer';
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-
-import Link from '@mui/material/Link';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import HomeIcon from "@mui/icons-material/Home"
-import ArticleIcon from "@mui/icons-material/Article"
-import AutoAwesomeMotionIcon from '@mui/icons-material/AutoAwesomeMotion';
-import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
-import { ListItemIcon } from '@mui/material';
+import {Drawer as MuiDrawer, AppBar as MuiAppBar, AppBarProps as MuiAppBarProps, Box, Link, CssBaseline,  ListItemIcon, ListItem, ListItemButton, Toolbar, List,  IconButton } from '@mui/material';
+import {ChevronRight, ChevronLeft, Menu as MenuIcon} from '@mui/icons-material';
+import {styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
+import {sideBarList} from '../../const';
 
 const drawerWidth = 240;
 
@@ -92,8 +75,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const sideBarList = [{"name": 'Home', "icon": <HomeIcon/>, "path": "/"}, {"name": 'Articles', "icon": <ArticleIcon/>, "path": "/articles"},{"name": 'Animations', "icon": <AutoAwesomeMotionIcon/>, "path": "/animations"},{"name": 'Characters', "icon": <SupervisedUserCircleIcon/>,"path": "/characters"}]
-
 export default function Sidebar() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -133,7 +114,7 @@ export default function Sidebar() {
       <Drawer variant="permanent" open={open} >
         <DrawerHeader >
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
           </IconButton>
         </DrawerHeader>
   

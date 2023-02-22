@@ -1,9 +1,6 @@
-import React from "react";
 import { Grid } from "@mui/material";
-
-import {ArticlesArr} from "../articles/articles"
+import { ArticlesArr } from "../../const";
 import Article, { IArticleData } from "../../components/article/article";
-
 
 function Home() {
   return <div>

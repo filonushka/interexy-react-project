@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid } from "@mui/material";
 import {AnimationTypeProps, AnimationSection} from '../../components/animation/animation';
 
-
 function Animations() {
     const animations: AnimationTypeProps[] = ["keyFrames", "setInterval", "animationRAF"];
   return (

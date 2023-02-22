@@ -1,4 +1,3 @@
-
 import { Card, CardContent, Typography } from "@mui/material";
 
 export interface IArticleData {
