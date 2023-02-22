@@ -20,6 +20,7 @@ const AnimationSlice = styled(Paper)`
         display:flex;
         text-align: center;
         align-items: center;  
+        justify-content: center;
         &[id="keyFrames"] {
             animation: square 4s linear infinite alternate  1s;
         }
