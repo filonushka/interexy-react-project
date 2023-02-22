@@ -1,6 +1,7 @@
 import {Box, Grid} from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AccordionList from "../accordion/accordion";
+import ImageList from "../imageList/imageList"
 
 let StyledBox = styled(Box)`
     height: 100%;
@@ -27,6 +28,9 @@ const Aside = () => {
                 </Grid>
                 <Grid item>
                    <AccordionList/>
+                </Grid>
+                <Grid item>
+                   <ImageList/>
                 </Grid>
             </Grid>
         </StyledBox>
