@@ -9,8 +9,7 @@ function DropDown() {
       {(popupState) => (
         <>
           <Button
-            variant="outline"
-            color="secondary"
+            sx={{ border: "1px solid #f2f3f4", color: "#f2f3f4" }}
             size="medium"
             {...bindTrigger(popupState)}
           >
