@@ -1,8 +1,8 @@
 import { useState, useEffect, useMemo } from "react";
-import { getCharacter } from "../../../src/api/characterApi";
-import { CharacterCard, ICharacterData } from "../../components/сard/card"
+import { getCharacters} from "../../../src/api/characterApi";
+import { CharacterCard } from "../../components/сard/card"
+import  {ICharacterData}  from "../../api/characterApi/index";
 
-import React from 'react'
 import { Grid } from "@mui/material";
 import SearchCharacter from "../../components/searchCharacter/searchCharacter";
 
@@ -10,7 +10,7 @@ function Characters() {
   const [cards, setCardsData] = useState([]);
 
   useEffect(() => {
-    getCharacter().then((res) => setCardsData(res.results));
+    getCharacters().then((res: any) => setCardsData(res.results));
   }, []);
   console.log(cards);
 

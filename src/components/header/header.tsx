@@ -1,9 +1,10 @@
-import React from "react";
 
-import "./header.scss";
+import AppBar from "@mui/material/AppBar";
 
-function Header() {
-  return <div className="header">Header</div>;
-}
+export  function Header(){
+    return (
+        <AppBar sx={{position:"sticky", background: '#2c2b30', height: "80px" }}>Header</AppBar>
+    );
+};
 
 export default Header;

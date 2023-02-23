@@ -1,21 +1,28 @@
-import React from 'react'
+import { useState } from "react";
 import {Outlet} from "react-router-dom";
 import {Grid} from '@mui/material';
-import Sidebar from '../sidebar/sidebar';
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Aside from '../aside/aside';
+import Sidebar from "../sidebar/sidebar";
+import GridContentContainer from "../gridContentContainer/gridContentContainer";
 
 import "./layout.scss"
 
 function Layout() {
+    const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
   return (
       <Grid container sx={{ flexGrow: 1 }} spacing={1} component={"div"} >
-        <Sidebar/>
+        <Sidebar
+                isSideBarOpen={isSideBarOpen}
+                setIsSideBarOpen={setIsSideBarOpen}
+            />
 
-        <Grid container item>
+        <GridContentContainer
+                item
+                isSideBarOpen={isSideBarOpen}>
+
           <Header/>
-          
           <Grid container spacing={1} sx={{ flexGrow: 1 }}>
               <Grid container
                         item
@@ -29,14 +36,13 @@ function Layout() {
                         }}
                     >
                   <Outlet />
-                </Grid>
+               </Grid>
                 <Grid item xs={2} sx={{ minHeight: "100vh" }}>
                   <Aside/>
-                </Grid>
-            </Grid> 
-
+              </Grid>
+          </Grid> 
           <Footer/>
-        </Grid> 
+        </GridContentContainer>
       </Grid>
   )
 }

@@ -1,14 +1,8 @@
 import {Card, CardContent, Typography, CardActions, Avatar, Link, Chip } from '@mui/material';
 import { styled } from "@mui/material/styles";
 
-export interface ICharacterData {
-    id: number;
-    name: string;
-    image: string;
-    gender: string;
-    species: string;
-    status: string;
-}
+import type  {ICharacterData}  from "../../api/characterApi/index";
+
 
 const StyledCard = styled(Card)`
   background-color: #F4F6F7;
@@ -70,3 +64,5 @@ export  function CharacterCard({ name, image, gender, species, status, id }: ICh
     </StyledCard>
   );
 }
+
+export { ICharacterData };

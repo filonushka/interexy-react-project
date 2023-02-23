@@ -1,10 +1,15 @@
 import * as React from 'react';
-import {Drawer as MuiDrawer, AppBar as MuiAppBar, AppBarProps as MuiAppBarProps, Box, Link, CssBaseline,  ListItemIcon, ListItem, ListItemButton, Toolbar, List,  IconButton } from '@mui/material';
-import {ChevronRight, ChevronLeft, Menu as MenuIcon} from '@mui/icons-material';
+import {Drawer as MuiDrawer, AppBarProps as MuiAppBarProps, Link, CssBaseline,  ListItemIcon, ListItem, ListItemButton, Toolbar, List,  IconButton } from '@mui/material';
+import {ChevronLeft, Menu as MenuIcon} from '@mui/icons-material';
 import {styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
 import {sideBarList} from '../../const';
 
 const drawerWidth = 240;
+
+// interface IDrawerProps extends DrawerProps {
+//   openedSideBarWidth: number;
+//   closedSideBarWidth: number;
+// }
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -36,29 +41,16 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-interface AppBarProps extends MuiAppBarProps {
-  open?: boolean;
-}
-
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
-})<AppBarProps>(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => {
+    switch (prop) {
+      case "isSideBarOpen":
+      case "openedSideBarWidth":
+      case "closedSideBarWidth":
+        return false;
+      default:
+        return true;
+    }
+  },})(
   ({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
@@ -75,81 +67,86 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Sidebar() {
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+interface ISideBarProps {
+  isSideBarOpen: boolean;
+  setIsSideBarOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+
+function Sidebar({
+  isSideBarOpen,
+  setIsSideBarOpen,
+}: ISideBarProps) {
+  const handleSideBarOpen = () => {
+    setIsSideBarOpen(true);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleSideBarClose = () => {
+    setIsSideBarOpen(false);
   };
 
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      
-      <AppBar position="fixed" open={open} sx={{ background: '#2c2b30', 
-              ...(open && { background: '#2c2b30' }),
-            }}>
-        <Toolbar>
-          <IconButton
-            color="inherit"  
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
+   const MyDrawerHeader = () => {
+    return (
+      <DrawerHeader>
+         {isSideBarOpen ? ( 
+           <IconButton onClick={handleSideBarClose}>
+             <ChevronLeft htmlColor="#2c2b30" />
+           </IconButton>
+         ) : (
+           <IconButton
+             color="inherit"
+             aria-label="open drawer"
+             onClick={handleSideBarOpen}
+             edge="start"
+           >
+             <MenuIcon htmlColor="#2c2b30" />
+           </IconButton>)}
+      </DrawerHeader>
+    )
+  };
 
-        </Toolbar>
-      </AppBar>  
-
-      <Drawer variant="permanent" open={open} >
-        <DrawerHeader >
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRight /> : <ChevronLeft />}
-          </IconButton>
-        </DrawerHeader>
-  
-        <List>
+  const MyLinksList = () => {
+    return (
+      <List>
           {sideBarList.map((text, index) => (
             <ListItem key={text.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
+                  justifyContent: isSideBarOpen ? 'initial' : 'center',
                   px: 2.5,
                 }}
               >
                 <ListItemIcon
                   sx={{
                     minWidth: 0,
-                    mr: open ? 3 : 'auto',
+                    mr: isSideBarOpen ? 3 : 'auto',
                     justifyContent: 'center',
                     color: 'inherit'
                   }}
                 >
                 <Link href={`${text.path}`} underline="hover" sx={{color: 'inherit'}}>{text.icon}</Link>
                 </ListItemIcon>
-               <Link href={`${text.path}`} underline="hover" sx={{ opacity: open ? 1 : 0, width: open ? 240 : 0, color: 'inherit'}}>{text.name}</Link>
+               <Link href={`${text.path}`} underline="hover" 
+               sx={{ opacity: isSideBarOpen ? 1 : 0, width: isSideBarOpen ? 240 : 0, color: 'inherit'}}
+               >{text.name}</Link>
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-  
-      </Drawer>
+    );
+  };
 
-      {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader sx={{width: "100px", height: "100px",backgroundColor: "#000fff"}}/>
-        
-      </Box> */}
-    </Box>
+   return (
+    <Drawer 
+      variant="permanent"
+      open={isSideBarOpen}
+    >
+      <MyDrawerHeader />
+      <MyLinksList />
+    </Drawer>
   );
-}
+
+  };
+
+export default Sidebar;

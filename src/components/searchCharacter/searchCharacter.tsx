@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import {TextField,Autocomplete} from '@mui/material';
-import { getCharacter } from "../../../src/api/characterApi";
-import {ICharacterData } from "../../components/сard/card"
+import { getCharacters } from "../../../src/api/characterApi";
+import type  {ICharacterData}  from "../../api/characterApi/index";
+
 
 
 export default function SearchCharacter() {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
-    getCharacter().then((res) => setCharacters(res.results));
+    getCharacters().then((res) => setCharacters(res.results));
   }, []);
 
   const [value, setValue] = useState('test');
