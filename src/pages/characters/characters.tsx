@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { getCharacters} from "../../../src/api/characterApi";
 import { CharacterCard } from "../../components/сard/card"
 import  {ICharacterData}  from "../../api/characterApi/index";
+import store from "../../store/store";
 
 import { Grid } from "@mui/material";
 import SearchCharacter from "../../components/searchCharacter/searchCharacter";
@@ -9,10 +11,13 @@ import SearchCharacter from "../../components/searchCharacter/searchCharacter";
 function Characters() {
   const [cards, setCardsData] = useState([]);
 
+  const { characters } = useSelector((store: any) => store.characters);
+  // const dispatch = useDispatch();
+  console.log(characters);
+
   useEffect(() => {
     getCharacters().then((res: any) => setCardsData(res.results));
   }, []);
-  console.log(cards);
 
   const memoCards = useMemo(() => {
     return (
@@ -20,7 +25,7 @@ function Characters() {
             container
             spacing={2}
             p={1}
-            sx={{ justifyContent: "center", flexDirection: "column",alignItems:"center", mt: 3 }}
+            sx={{ justifyContent: "center", flexDirection: "column", alignItems:"center", mt: 3 }}
         >
           <Grid item sx={{alignItems: "center", width: "250px"}} >
             <SearchCharacter/>

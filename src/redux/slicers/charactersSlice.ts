@@ -19,7 +19,7 @@ const initialState = {
 } as IInitialState;
 
 export const fetchCharacters = createAsyncThunk<ICharacterData[]>(
-    "characters/fetchCharacters",
+    "character/fetchCharacters",
     async () => {
         return (await getCharacters()) as ICharacterData[];
     }

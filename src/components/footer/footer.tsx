@@ -1,8 +1,6 @@
-
-
 import { Box, Container, Grid, Typography } from "@mui/material";
 
-function Footer(){
+function Footer() {
   return (
     <Box
       sx={{
@@ -24,6 +22,6 @@ function Footer(){
       </Container>
     </Box>
   );
-};
+}
 
 export default Footer;

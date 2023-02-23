@@ -19,8 +19,6 @@ export default function SearchCharacter() {
       setValue(e.target.value);
    }
 
-   console.log(value, "value");
-
   return (    
       <Autocomplete
         freeSolo
