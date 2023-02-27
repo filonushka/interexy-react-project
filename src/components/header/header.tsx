@@ -1,6 +1,7 @@
 import AppBar from "@mui/material/AppBar";
 import { Grid, Typography } from "@mui/material";
 import DropDown from "../dropDown/dropDown";
+import MyWorker from "../worker/worker";
 
 export function Header() {
   return (
@@ -12,8 +13,7 @@ export function Header() {
         textAlign: "center",
         alignItems: "center",
         justifyContent: "center",
-        margin: 0,
-        paddingTop: "20px",
+        padding: "20px",
       }}
     >
       <Grid
@@ -21,6 +21,7 @@ export function Header() {
         direction="column"
         alignItems="center"
         justifyContent={"flex-end"}
+        height="60px"
       >
         <Grid item xs={12}>
           <Typography color="#f2f3f4" variant="h5">
@@ -28,9 +29,10 @@ export function Header() {
           </Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography color="#f2f3f4" variant="h5">
-            <DropDown />
-          </Typography>
+          <DropDown />
+        </Grid>
+        <Grid item xs={12}>
+          <MyWorker />
         </Grid>
       </Grid>
     </AppBar>
